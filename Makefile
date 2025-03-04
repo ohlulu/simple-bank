@@ -1,6 +1,7 @@
 .PHONY: install
 install:
 	brew install golang-migrate
+	brew install sqlc
 
 .PHONY: postgres
 postgres:
