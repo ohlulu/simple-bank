@@ -1,0 +1,6 @@
+{
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+    "Prettier-SQL.SQLFlavourOverride": "postgresql",
+    "Prettier-SQL.commaPosition": "after",
+    "Prettier-SQL.keywordCase": "upper"
+}
