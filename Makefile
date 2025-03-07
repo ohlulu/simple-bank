@@ -45,6 +45,10 @@ migratedown:
 sqlc:
 	sqlc generate
 
+.PHONY: test
+test:
+	go test -v -cover ./...
+
 ### ----------------------- Helper ----------------------- ###
 
 NC    	= \033[0m
