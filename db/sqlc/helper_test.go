@@ -1,6 +1,7 @@
 package db
 
 import (
+	"context"
 	"fmt"
 	"math/rand"
 	"strings"
@@ -19,6 +20,16 @@ func CreateRandomAccount() Account {
 		Balance:  randomMoney(),
 		Currency: randomCurrency(),
 	}
+}
+
+func CreateAndInsertRandomAccount() Account {
+	account := CreateRandomAccount()
+	result, _ := testQueries.CreateAccount(context.Background(), CreateAccountParams{
+		Owner:    account.Owner,
+		Balance:  account.Balance,
+		Currency: account.Currency,
+	})
+	return result
 }
 
 // RandomInt generates a random integer between min and max
