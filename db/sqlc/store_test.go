@@ -12,7 +12,6 @@ func TestTransferTx(t *testing.T) {
 
 	account1 := CreateAndInsertRandomAccount()
 	account2 := CreateAndInsertRandomAccount()
-
 	amount := int64(10)
 
 	errs := make(chan error)
@@ -60,6 +59,29 @@ func TestTransferTx(t *testing.T) {
 		_, err = store.GetEntry(context.Background(), toEntry.ID)
 		assert.NoError(t, err)
 
-		// TODO: check account's balance
+		// check accounts
+		fromAccount := result.FromAccount
+		assert.Equal(t, account1.ID, fromAccount.ID)
+
+		toAccount := result.ToAccount
+		assert.Equal(t, account2.ID, toAccount.ID)
+
+		// check balances
+		diff1 := account1.Balance - fromAccount.Balance
+		diff2 := toAccount.Balance - account2.Balance
+		assert.Equal(t, diff1, diff2)
+
+		assert.True(t, diff1 > 0)
+		assert.Equal(t, diff1, int64(i+1)*amount)
 	}
+
+	// check the final updated balance
+	updatedAccount1, err := store.GetAccount(context.Background(), account1.ID)
+	assert.NoError(t, err)
+
+	updatedAccount2, err := store.GetAccount(context.Background(), account2.ID)
+	assert.NoError(t, err)
+
+	assert.Equal(t, account1.Balance-int64(n)*amount, updatedAccount1.Balance)
+	assert.Equal(t, account2.Balance+int64(n)*amount, updatedAccount2.Balance)
 }
