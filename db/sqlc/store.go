@@ -90,7 +90,7 @@ func (store *Store) TransferTx(ctx context.Context, arg TransferTxParams) (Trans
 			return err
 		}
 
-		transferMoney(ctx, q, arg.FromAccountID, arg.ToAccountID, arg.Amount)
+		result.FromAccount, result.ToAccount, err = transferMoney(ctx, q, arg.FromAccountID, arg.ToAccountID, arg.Amount)
 
 		return nil
 	})
