@@ -23,7 +23,9 @@ install:
 
 .PHONY: postgres
 postgres:
-	docker run --name postgres17 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:17.4-alpine
+	@# create by
+	@# docker run --name postgres17 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:17.4-alpine
+	docker start postgres17
 
 .PHONY: createdb
 createdb:
