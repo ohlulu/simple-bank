@@ -55,6 +55,9 @@ migratedown:
 sqlc:
 	sqlc generate
 
+.PHONY: mock
+mock:
+	mockgen -destination db/mock/store.go github.com/ohlulu/simple-bank/db/sqlc Store
 
 ### ----------------------- Helper ----------------------- ###
 
