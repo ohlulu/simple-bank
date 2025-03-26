@@ -1,3 +1,11 @@
+.PHONY: run
+run:
+	nodemon --exec go run main.go --signal SIGTERM
+
+.PHONY: test
+test:
+	go test -v -cover ./...
+
 .PHONY: install
 install:
 	@echo "Checking and installing required tools..."
@@ -47,9 +55,6 @@ migratedown:
 sqlc:
 	sqlc generate
 
-.PHONY: test
-test:
-	go test -v -cover ./...
 
 ### ----------------------- Helper ----------------------- ###
 
