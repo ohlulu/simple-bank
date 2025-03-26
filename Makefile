@@ -1,6 +1,6 @@
 .PHONY: run
 run:
-	nodemon --exec go run main.go --signal SIGTERM
+	nodemon --exec go run main.go --signal SIGINT
 
 .PHONY: test
 test:
