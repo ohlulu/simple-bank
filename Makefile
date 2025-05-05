@@ -65,6 +65,7 @@ sqlc:
 
 .PHONY: mock
 mock:
+	@# go install go.uber.org/mock/mockgen@latest
 	mockgen -destination db/mock/store.go github.com/ohlulu/simple-bank/db/sqlc Store
 
 ### ----------------------- Helper ----------------------- ###

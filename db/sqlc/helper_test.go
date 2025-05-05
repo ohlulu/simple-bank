@@ -11,7 +11,7 @@ const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 func CreateRandomAccount() Account {
 	return Account{
-		Owner:    randomOwner(),
+		Owner:    RandomOwner(),
 		Balance:  randomMoney(),
 		Currency: randomCurrency(),
 	}
@@ -46,8 +46,12 @@ func randomString(n int) string {
 }
 
 // RandomOwner generates a random owner name
-func randomOwner() string {
+func RandomOwner() string {
 	return randomString(6)
+}
+
+func RandomEmail() string {
+	return fmt.Sprintf("%s@email.com", randomString(6))
 }
 
 // RandomMoney generates a random amount of money
